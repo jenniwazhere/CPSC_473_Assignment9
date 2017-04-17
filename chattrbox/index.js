@@ -3,7 +3,6 @@ var fs = require('fs');
 var extract = require('./extract');
 var wss = require('./websockets-server');
 
-
 var handleError = function(err, res) {
     res.writeHead(404);
     res.end();
@@ -16,6 +15,7 @@ var server = http.createServer(function(req, res) {
             handleError(err, res);
             return;
         } else {
+            res.setHeader('Content-Type', 'text/html');
             res.end(data);
         }
     });
